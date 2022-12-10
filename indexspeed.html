@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Detector</title>
+</head>
+<body>
+    <!-- --------------added styling on body----------- -->
+    <style>
+        body {
+            text-align: center;
+            background-color: whitesmoke;
+        }
+    </style>
+    <!-- -------the header------ -->
+    <h1>Speed Detector</h1>
+
+    <!-- ------------------the input section------------ -->
+
+    <input type="number" id="num1" placeholder="Enter Speed"/>
+
+    <button id="submitBtn" >Detect Speed</button>
+
+    <!-- -----Points To Demerit----------- -->
+    <h4>Points To Demerit</h4>
+    <p id="answer"></p>
+    
+    <!-- ----------------Js Script--------------- -->
+    <script>
+        const button = document.getElementById("submitBtn")
+
+    button.addEventListener("click", function(){
+    const speed = parseFloat(document.getElementById("num1").value)
+
+    // ----------returns ok if speed below 70 ----------
+    
+    if (speed<=70) {
+        merit = 'Ok';
+        document.getElementById("answer").innerText = merit
+    }
+
+    // ---------------calculates the points to demerit and license suspension--------------
+
+    else {
+        const points = speed - 70;
+        const calculation = parseInt(points / 5);
+        let pointsdemerited = calculation * 1;
+        let pointsToDemerit = `Points: ${pointsdemerited}`; 
+    //checks if points to demerit are greater than 12
+        if (pointsdemerited > 12){
+            pointsToDemerit = "License suspended"
+        }
+        document.getElementById("answer").innerText = pointsToDemerit
+        
+    }
+    
+    
+})
+    </script>
+</body>
+</html>
